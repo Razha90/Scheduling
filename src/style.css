@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;700&display=swap");
 :root {
     --cavernPink: #E1B0AC;
     --LightPink: #F2D4D6;
     --navy: #213F99;
+    --myFont: "Josefin Sans", sans-serif;
 }
 
 body {
@@ -9,13 +11,14 @@ body {
     background-color: var(--cavernPink);
     color: var(--navy);
     font-size: 18px;
+    font-family: var(--myFont);
 }
 
 /*      HEADER       */
 .header {
     display: flex;
     flex-direction: row;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .header button {
@@ -67,8 +70,12 @@ input:focus {
     gap: 10px;
     justify-content: center;
     animation: trans 1s ease-in-out;
+    animation-delay: 1s;
 }
-
+button {
+    font-family: var(--myFont);
+    font-size: 18px;
+}
 .process button {
     border: 0;
     background-color: var(--LightPink);

@@ -6,8 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="./src/loading.css">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 </head>
 <body>
+    <div class="wrapper" style="display: none;">
+        <center style="margin-top: 50px;"><h1>Scheduling With FIFO and PS</h1></center>
     <div class="header">
         <table>
             <tr>
@@ -44,6 +48,23 @@
     <div class="output">
         
     </div>
+    </div>
+    <div class="loading">
+        <span>Loading</span>
+      </div>
 </body>
 <script src="./src/script.js"></script>
+<script>
+    $(document).ready(function () {
+    });
+
+    $(window).on("load", function () {
+      
+     setTimeout(() => {
+        $(".loading").css("display", "none");
+      $(".wrapper").css("display", "block");
+      
+     }, 1000)
+    });
+  </script>
 </html>
