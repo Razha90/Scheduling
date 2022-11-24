@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+    <div class="header">
+        <table>
+            <tr>
+                <th>Proses</th>
+                <th>Burst-Time</th>
+                <th>Saat Tiba</th>
+                <th>Priority</th>
+            </tr>
+            <tr id="getMyData">
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+            </tr>
+        </table>
+        <button onclick="takeData()">Add Data</button>
+    </div>
+    <div style="margin-top: 20px;">
+        <table class="replace" style="display: none;">
+            <tr>
+                <th>Proses</th>
+                <th>Burst-Time</th>
+                <th>Saat Tiba</th>
+                <th>Priority</th>
+            </tr>
+        </table>
+    </div>
+        <div class="process" style="display: none;">
+            <button onclick="FifoPS()">FIFO and PS</button>
+            <button onclick="Fifo()">FIFO</button>
+            <button onclick="PS()">PS</button>
+        </div>
+    
+    <div class="output">
+        
+    </div>
+</body>
+<script src="./src/script.js"></script>
+</html>

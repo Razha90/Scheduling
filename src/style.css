@@ -1,0 +1,93 @@
+:root {
+    --cavernPink: #E1B0AC;
+    --LightPink: #F2D4D6;
+    --navy: #213F99;
+}
+
+body {
+    margin: 0;
+    background-color: var(--cavernPink);
+    color: var(--navy);
+    font-size: 18px;
+}
+
+/*      HEADER       */
+.header {
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+}
+
+.header button {
+    width: 150px;
+    height: 33px;
+    border: 0;
+    padding: 10px 0;
+    background-color: rgb(34, 202, 34);
+    border-radius: 5px;
+    color: var(--navy);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.header button:hover {
+    opacity: 0.5;
+}
+
+table {
+    width: 94%;
+    margin: 0 3%;
+    border-collapse: collapse;
+    animation: trans 1s ease-in-out;
+}
+
+td , th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+  
+}
+
+input {
+    width: 100%;
+    padding: 5px 0;
+    border: 0;
+    text-align: center;
+}
+
+input:focus {
+    outline: none;
+}
+
+/*         process             */
+.process {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+    justify-content: center;
+    animation: trans 1s ease-in-out;
+}
+
+.process button {
+    border: 0;
+    background-color: var(--LightPink);
+    padding: 10px;
+    color: var(--navy);
+    border-radius: 3px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.process button:hover {
+    opacity: 0.5;
+}
+
+
+h2 {
+    text-align: center;
+}
+
+@keyframes trans {
+    from {transform: translateX(-100px); opacity: 0;}
+    to {transform: translateX(0px); opacity: 1;}
+}
