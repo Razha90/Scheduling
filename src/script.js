@@ -44,16 +44,21 @@ alert("Harap Isi Data Dengan Benar")
 
 
 function FifoPS() {
-    bankData.forEach((e, i) => {
-
-    });
+    let timeVal = 0;
+    function periksa() {
+        bankData.forEach((e,i) => {
+            if(e.SaatTiba == timeVal) {
+                
+            }
+        })
+    }
+    periksa();
 }
 
 function Fifo() {
     let hasilFifo = [];
     let SaatMulai = [];
     let SaatSelesai = [];
-    let TAT = [];
     bankData.sort((a, b) => {
         return a.SaatTiba - b.SaatTiba
     })
@@ -68,17 +73,17 @@ function Fifo() {
             SaatMulai.push(Number(lastElemenntData) + Number(bankData[i-1].BurstTime));
             SaatSelesai.push(Number(lastElemenntData1) + Number(e.BurstTime));
         }
-        TAT.push(Number(SaatSelesai[i]) - Number(e.SaatTiba));
     })
     
     bankData.forEach((e,i) => {
-        hasilFifo.push(`<tr><td>${e.Proses}</td><td>${SaatMulai[i]}</td><td>${SaatSelesai[i]}</td><td>${TAT[i]}</td></tr>`)
+        hasilFifo.push(`<tr><td>${e.Proses}</td><td>${SaatMulai[i]}</td><td>${SaatSelesai[i]}</td><td>${SaatMulai[i]}</td><td>${SaatSelesai[i]}</td></tr>`)
         console.log(SaatSelesai[i])
     });
     output.innerHTML = `<h2>FIFO</h2><table><tr>
     <th>Proses</th>
     <th>Saat Mulai</th>
     <th>Saat Selesai</th>
+    <th>AWT</th>
     <th>TAT</th>
     </tr>
     ${hasilFifo.join("")}
@@ -86,7 +91,8 @@ function Fifo() {
     <td></td>
     <td></td>
     <td></td>
-    <td>TAT = ${TAT.reduce((e,i)=> {return e + i})}</td></tr></table>`;
+    <td>AWT = ${SaatMulai.reduce((e,i)=> {return e + i})/SaatMulai.length}</td>
+    <td>TAT = ${SaatSelesai.reduce((e,i) => {return e + i}) / SaatSelesai.length}</td></tr></table>`;
 }
 
 function PS() {
@@ -94,7 +100,7 @@ function PS() {
     let SaatSelesai = [];
     let hasilPS = [];
     bankData.sort((a, b) => {
-        return a.Prioritas + b.Prioritas
+        return a.Prioritas - b.Prioritas
     });
  
     bankData.forEach((e , i) => {
@@ -102,16 +108,17 @@ function PS() {
         let lastElemenntData1 = SaatSelesai[SaatSelesai.length - 1];
         if (i == 0) {
             SaatMulai.push(0);
-            SaatSelesai.push(e.BurstTime);
+            lastElemenntData = SaatMulai[SaatMulai.length - 1];
+            SaatSelesai.push(lastElemenntData + e.BurstTime);
         } else {
-            SaatMulai.push(lastElemenntData + e.BurstTime);
+            SaatMulai.push(lastElemenntData1);
             SaatSelesai.push(lastElemenntData1 + e.BurstTime);
         }
     });
     bankData.forEach((e,i) => {
         hasilPS.push(`<tr><td>${e.Proses}</td><td>${SaatMulai[i]}</td><td>${SaatSelesai[i]}</td><td>${SaatMulai[i]}</td></tr>`)
     });
-    output.innerHTML = `<table><tr>
+    output.innerHTML = `<center><h1>PS</h1></center><table><tr>
     <th>Proses</th>
     <th>Saat Mulai</th>
     <th>Saat Selesai</th>
@@ -121,7 +128,7 @@ function PS() {
     <th></th>
     <th></th>
     <th></th>
-    <th>AWT = ${SaatMulai.reduce((e,i)=> {return e + i})}</th>
+    <th>AWT = ${SaatMulai.reduce((e,i)=> {return e + i})/SaatMulai.length}</th>
     </tr>
     </table>`;
 }
